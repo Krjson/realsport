@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Row, Col } from 'react-bootstrap';
 import Product from '../components/Product';
@@ -18,6 +18,9 @@ const HomeScreen = ({ match }) => {
   const productList = useSelector((state) => state.productList);
   const { loading, error, products, page, pages } = productList;
 
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
   useEffect(() => {
     dispatch(listProducts(keyword, pageNumber));
   }, [dispatch, keyword, pageNumber]);
@@ -29,26 +32,30 @@ const HomeScreen = ({ match }) => {
         <ProductCarousel />
       ) : (
         <Link to="/" className="btn btn-light">
-          Go Back
+         Вернуться назад
         </Link>
       )}
-      <h1>Новые товары</h1>
-      {loading ? (
-        <Loader />
-      ) : error ? (
-        <Message variant="danger">{error}</Message>
-      ) : (
+
+      {isHomePage && (
         <>
-          <Row>
-            {products
-              .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
-              .slice(0, 8)
-              .map((product) => (
-                <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-                  <Product product={product} />
-                </Col>
-              ))}
-          </Row>
+          <h1>Новые товары</h1>
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <Message variant="danger">{error}</Message>
+          ) : (
+            <Row>
+              {products
+                .sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
+                .slice(0, 8)
+                .map((product) => (
+                  <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                    <Product product={product} />
+                  </Col>
+                ))}
+            </Row>
+          )}
+
           <h2>Товары для тенниса</h2>
           <Row>
             {products
@@ -66,10 +73,11 @@ const HomeScreen = ({ match }) => {
             </Link>
           </div>
 
+          {/* Дополнительные категории */}
           <h2>Товары для туризма, спорта и отдыха</h2>
           <Row>
             {products
-              .filter((product) => product.category === 'tourism')
+              .filter((product) => product.category === 'outdoor')
               .slice(0, 8)
               .map((product) => (
                 <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
@@ -151,7 +159,6 @@ const HomeScreen = ({ match }) => {
             </Link>
           </div>
 
-          {/* Другие товары */}
           <h2>Другие товары</h2>
           <Row>
             {products
@@ -176,6 +183,29 @@ const HomeScreen = ({ match }) => {
               Посмотреть все товары
             </Link>
           </div>
+        </>
+      )}
+
+      {!isHomePage && (
+        <>
+          {loading ? (
+            <Loader />
+          ) : error ? (
+            <Message variant="danger">{error}</Message>
+          ) : (
+            <Row>
+              {products.map((product) => (
+                <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+                  <Product product={product} />
+                </Col>
+              ))}
+            </Row>
+          )}
+          <Paginate
+            pages={pages}
+            page={page}
+            keyword={keyword ? keyword : ''}
+          />
         </>
       )}
     </>

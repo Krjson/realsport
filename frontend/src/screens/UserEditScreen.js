@@ -50,10 +50,10 @@ const UserEditScreen = ({ match, history }) => {
   return (
     <>
       <Link to='/admin/userlist' className='btn btn-light my-3'>
-        Go Back
+      Вернуться назад
       </Link>
       <FormContainer>
-        <h1>Edit User</h1>
+        <h1>Изменить пользователя</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (
@@ -63,20 +63,20 @@ const UserEditScreen = ({ match, history }) => {
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='name'>
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Имя</Form.Label>
               <Form.Control
                 type='name'
-                placeholder='Enter name'
+                placeholder='Введите имя'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='email'>
-              <Form.Label>Email Address</Form.Label>
+              <Form.Label>Почта</Form.Label>
               <Form.Control
                 type='email'
-                placeholder='Enter email'
+                placeholder='Почта'
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               ></Form.Control>
@@ -85,14 +85,14 @@ const UserEditScreen = ({ match, history }) => {
             <Form.Group controlId='isadmin'>
               <Form.Check
                 type='checkbox'
-                label='Is Admin'
+                label='Админ'
                 checked={isAdmin}
                 onChange={(e) => setIsAdmin(e.target.checked)}
               ></Form.Check>
             </Form.Group>
 
             <Button type='submit' variant='primary'>
-              Update
+              Обновить
             </Button>
           </Form>
         )}

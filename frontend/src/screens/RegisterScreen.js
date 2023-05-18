@@ -38,13 +38,13 @@ const RegisterScreen = ({ location, history }) => {
 
   return (
     <FormContainer>
-      <h1>Sign Up</h1>
+      <h1>Регистрация</h1>
       {message && <Message variant='danger'>{message}</Message>}
       {error && <Message variant='danger'>{error}</Message>}
       {loading && <Loader />}
       <Form onSubmit={submitHandler}>
         <Form.Group controlId='name'>
-          <Form.Label>Name</Form.Label>
+          <Form.Label>Имя</Form.Label>
           <Form.Control
             type='name'
             placeholder='Enter name'
@@ -54,7 +54,7 @@ const RegisterScreen = ({ location, history }) => {
         </Form.Group>
 
         <Form.Group controlId='email'>
-          <Form.Label>Email Address</Form.Label>
+          <Form.Label>Почта</Form.Label>
           <Form.Control
             type='email'
             placeholder='Enter email'
@@ -64,7 +64,7 @@ const RegisterScreen = ({ location, history }) => {
         </Form.Group>
 
         <Form.Group controlId='password'>
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Пароль</Form.Label>
           <Form.Control
             type='password'
             placeholder='Enter password'
@@ -74,7 +74,7 @@ const RegisterScreen = ({ location, history }) => {
         </Form.Group>
 
         <Form.Group controlId='confirmPassword'>
-          <Form.Label>Confirm Password</Form.Label>
+          <Form.Label>Подтвердите пароль</Form.Label>
           <Form.Control
             type='password'
             placeholder='Confirm password'
@@ -84,15 +84,15 @@ const RegisterScreen = ({ location, history }) => {
         </Form.Group>
 
         <Button type='submit' variant='primary'>
-          Register
+          Ригистрация
         </Button>
       </Form>
 
       <Row className='py-3'>
         <Col>
-          Have an Account?{' '}
+          Аккаут уже есть?{' '}
           <Link to={redirect ? `/login?redirect=${redirect}` : '/login'}>
-            Login
+            Авторизация
           </Link>
         </Col>
       </Row>

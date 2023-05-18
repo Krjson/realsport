@@ -94,10 +94,10 @@ const ProductEditScreen = ({ match, history }) => {
   return (
     <>
       <Link to='/admin/productlist' className='btn btn-light my-3'>
-        Go Back
+      Вернуться назад
       </Link>
       <FormContainer>
-        <h1>Edit Product</h1>
+        <h1>Редактирование</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (
@@ -107,27 +107,27 @@ const ProductEditScreen = ({ match, history }) => {
         ) : (
           <Form onSubmit={submitHandler}>
             <Form.Group controlId='name'>
-              <Form.Label>Name</Form.Label>
+              <Form.Label>Название</Form.Label>
               <Form.Control
                 type='name'
-                placeholder='Enter name'
+                placeholder='Введите название'
                 value={name}
                 onChange={(e) => setName(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='price'>
-              <Form.Label>Price</Form.Label>
+              <Form.Label>Цена</Form.Label>
               <Form.Control
                 type='number'
-                placeholder='Enter price'
+                placeholder='Цена'
                 value={price}
                 onChange={(e) => setPrice(e.target.value)}
               ></Form.Control>
             </Form.Group>
 
             <Form.Group controlId='image'>
-              <Form.Label>Image</Form.Label>
+              <Form.Label>Картинка</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Enter image url'
@@ -144,7 +144,7 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId='brand'>
-              <Form.Label>Brand</Form.Label>
+              <Form.Label>Брэнд</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Enter brand'
@@ -154,7 +154,7 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId='countInStock'>
-              <Form.Label>Count In Stock</Form.Label>
+              <Form.Label>Количество</Form.Label>
               <Form.Control
                 type='number'
                 placeholder='Enter countInStock'
@@ -164,7 +164,7 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId='category'>
-              <Form.Label>Category</Form.Label>
+              <Form.Label>Категория</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Enter category'
@@ -174,7 +174,7 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Form.Group controlId='description'>
-              <Form.Label>Description</Form.Label>
+              <Form.Label>Описание</Form.Label>
               <Form.Control
                 type='text'
                 placeholder='Enter description'
@@ -184,7 +184,7 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Button type='submit' variant='primary'>
-              Update
+              Обновление
             </Button>
           </Form>
         )}

@@ -35,10 +35,10 @@ const Header = () => {
               {userInfo ? (
                 <NavDropdown title={userInfo.name} id='username'>
                   <LinkContainer to='/profile'>
-                    <NavDropdown.Item>Profile</NavDropdown.Item>
+                    <NavDropdown.Item>Профиль</NavDropdown.Item>
                   </LinkContainer>
                   <NavDropdown.Item onClick={logoutHandler}>
-                    Logout
+                    Выход
                   </NavDropdown.Item>
                 </NavDropdown>
               ) : (
@@ -51,13 +51,13 @@ const Header = () => {
               {userInfo && userInfo.isAdmin && (
                 <NavDropdown title='Admin' id='adminmenu'>
                   <LinkContainer to='/admin/userlist'>
-                    <NavDropdown.Item>Users</NavDropdown.Item>
+                    <NavDropdown.Item>Пользователи</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to='/admin/productlist'>
-                    <NavDropdown.Item>Products</NavDropdown.Item>
+                    <NavDropdown.Item>Товары</NavDropdown.Item>
                   </LinkContainer>
                   <LinkContainer to='/admin/orderlist'>
-                    <NavDropdown.Item>Orders</NavDropdown.Item>
+                    <NavDropdown.Item>Заказы</NavDropdown.Item>
                   </LinkContainer>
                 </NavDropdown>
               )}
@@ -67,7 +67,7 @@ const Header = () => {
                 <LinkContainer to='/category/tennis'>
                   <NavDropdown.Item>Большой теннис</NavDropdown.Item>
                 </LinkContainer>
-                <LinkContainer to='/category/outdoor'>
+                <LinkContainer to='/category/tourism'>
                   <NavDropdown.Item>Туризм, спорт, отдых</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to='/category/shoes'>

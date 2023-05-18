@@ -25,7 +25,7 @@ const OrderListScreen = ({ history }) => {
 
   return (
     <>
-      <h1>Orders</h1>
+      <h1>Заказы</h1>
       {loading ? (
         <Loader />
       ) : error ? (
@@ -35,11 +35,11 @@ const OrderListScreen = ({ history }) => {
           <thead>
             <tr>
               <th>ID</th>
-              <th>USER</th>
-              <th>DATE</th>
-              <th>TOTAL</th>
-              <th>PAID</th>
-              <th>DELIVERED</th>
+              <th>Пользователь</th>
+              <th>Дата</th>
+              <th>Количество</th>
+              <th>Оплата</th>
+              <th>Доставка</th>
               <th></th>
             </tr>
           </thead>
@@ -49,7 +49,7 @@ const OrderListScreen = ({ history }) => {
                 <td>{order._id}</td>
                 <td>{order.user && order.user.name}</td>
                 <td>{order.createdAt.substring(0, 10)}</td>
-                <td>${order.totalPrice}</td>
+                <td>{order.totalPrice} Тг.</td>
                 <td>
                   {order.isPaid ? (
                     order.paidAt.substring(0, 10)
@@ -67,7 +67,7 @@ const OrderListScreen = ({ history }) => {
                 <td>
                   <LinkContainer to={`/order/${order._id}`}>
                     <Button variant='light' className='btn-sm'>
-                      Details
+                      Подробнее
                     </Button>
                   </LinkContainer>
                 </td>

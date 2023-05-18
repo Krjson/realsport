@@ -91,51 +91,51 @@ const OrderScreen = ({ match, history }) => {
     <Message variant='danger'>{error}</Message>
   ) : (
     <>
-      <h1>Order {order._id}</h1>
+      <h1>Заказ №{order._id}</h1>
       <Row>
         <Col md={8}>
           <ListGroup variant='flush'>
             <ListGroup.Item>
-              <h2>Shipping</h2>
+              <h2>Детали заказа</h2>
               <p>
-                <strong>Name: </strong> {order.user.name}
+                <strong>Имя: </strong> {order.user.name}
               </p>
               <p>
-                <strong>Email: </strong>{' '}
+                <strong>Почта: </strong>{' '}
                 <a href={`mailto:${order.user.email}`}>{order.user.email}</a>
               </p>
               <p>
-                <strong>Address:</strong>
+                <strong>Адрес:</strong>
                 {order.shippingAddress.address}, {order.shippingAddress.city}{' '}
                 {order.shippingAddress.postalCode},{' '}
                 {order.shippingAddress.country}
               </p>
               {order.isDelivered ? (
                 <Message variant='success'>
-                  Delivered on {order.deliveredAt}
+                  Доставлено {order.deliveredAt}
                 </Message>
               ) : (
-                <Message variant='danger'>Not Delivered</Message>
+                <Message variant='danger'>Не доставлено</Message>
               )}
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Payment Method</h2>
+              <h2>Метод оплаты</h2>
               <p>
-                <strong>Method: </strong>
+                <strong>Метод: </strong>
                 {order.paymentMethod}
               </p>
               {order.isPaid ? (
-                <Message variant='success'>Paid on {order.paidAt}</Message>
+                <Message variant='success'>Оплачено {order.paidAt}</Message>
               ) : (
-                <Message variant='danger'>Not Paid</Message>
+                <Message variant='danger'>Не оплачено</Message>
               )}
             </ListGroup.Item>
 
             <ListGroup.Item>
-              <h2>Order Items</h2>
+              <h2>Заказы:</h2>
               {order.orderItems.length === 0 ? (
-                <Message>Order is empty</Message>
+                <Message>Ничего нет</Message>
               ) : (
                 <ListGroup variant='flush'>
                   {order.orderItems.map((item, index) => (
@@ -155,7 +155,7 @@ const OrderScreen = ({ match, history }) => {
                           </Link>
                         </Col>
                         <Col md={4}>
-                          {item.qty} x ${item.price} = ${item.qty * item.price}
+                          {item.qty} x {item.price} Тг. = {item.qty * item.price} Тг.
                         </Col>
                       </Row>
                     </ListGroup.Item>
@@ -169,30 +169,30 @@ const OrderScreen = ({ match, history }) => {
           <Card>
             <ListGroup variant='flush'>
               <ListGroup.Item>
-                <h2>Order Summary</h2>
+                <h2>Сумма заказа</h2>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Items</Col>
-                  <Col>${order.itemsPrice}</Col>
+                  <Col>Цена товара</Col>
+                  <Col>{order.itemsPrice} Тг.</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Shipping</Col>
-                  <Col>${order.shippingPrice}</Col>
+                  <Col>Доставка</Col>
+                  <Col>{order.shippingPrice} Тг.</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Tax</Col>
-                  <Col>${order.taxPrice}</Col>
+                  <Col>Налог за сервис PayPal</Col>
+                  <Col>{order.taxPrice} Тг.</Col>
                 </Row>
               </ListGroup.Item>
               <ListGroup.Item>
                 <Row>
-                  <Col>Total</Col>
-                  <Col>${order.totalPrice}</Col>
+                  <Col>Итого</Col>
+                  <Col>{order.totalPrice} Тг.</Col>
                 </Row>
               </ListGroup.Item>
               {!order.isPaid && (

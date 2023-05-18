@@ -32,10 +32,10 @@ const CartScreen = ({ match, location, history }) => {
   return (
     <Row>
       <Col md={8}>
-        <h1>Shopping Cart</h1>
+        <h1>Корзина покупок</h1>
         {cartItems.length === 0 ? (
           <Message>
-            Your cart is empty <Link to='/'>Go Back</Link>
+            Ничего нет <Link to='/'>вернутся за покупками</Link>
           </Message>
         ) : (
           <ListGroup variant='flush'>
@@ -48,7 +48,7 @@ const CartScreen = ({ match, location, history }) => {
                   <Col md={3}>
                     <Link to={`/product/${item.product}`}>{item.name}</Link>
                   </Col>
-                  <Col md={2}>${item.price}</Col>
+                  <Col md={2}>{item.price} Тг.</Col>
                   <Col md={2}>
                     <Form.Control
                       as='select'
@@ -86,13 +86,13 @@ const CartScreen = ({ match, location, history }) => {
           <ListGroup variant='flush'>
             <ListGroup.Item>
               <h2>
-                Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
-                items
+                Всего ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
+                товаров
               </h2>
-              $
+              
               {cartItems
                 .reduce((acc, item) => acc + item.qty * item.price, 0)
-                .toFixed(2)}
+                .toFixed(2)}Тг.
             </ListGroup.Item>
             <ListGroup.Item>
               <Button
@@ -101,7 +101,8 @@ const CartScreen = ({ match, location, history }) => {
                 disabled={cartItems.length === 0}
                 onClick={checkoutHandler}
               >
-                Proceed To Checkout
+                Перейти к оформлению заказа
+
               </Button>
             </ListGroup.Item>
           </ListGroup>
