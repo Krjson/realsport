@@ -73,7 +73,6 @@ const HomeScreen = ({ match }) => {
             </Link>
           </div>
 
-          {/* Дополнительные категории */}
           <h2>Товары для туризма, спорта и отдыха</h2>
           <Row>
             {products
@@ -86,7 +85,7 @@ const HomeScreen = ({ match }) => {
               ))}
           </Row>
           <div className="text-center">
-            <Link to="/category/tourism" className="btn btn-primary">
+            <Link to="/category/outdoor" className="btn btn-primary">
               Посмотреть все товары
             </Link>
           </div>

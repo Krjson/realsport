@@ -163,17 +163,13 @@ const getTopProducts = asyncHandler(async (req, res) => {
 const getProductsByCategory = asyncHandler(async (req, res) => {
   const category = req.params.category;
 
-  const excludedCategories = ['tennis', 'tourism', 'shoes', 'bicycles', 'fitness', 'swimming'];
-
   const products = await Product.find({
-    $or: [
-      { category: category },
-      { category: 'Другое', category: { $not: { $in: excludedCategories } } }
-    ]
+    category: category
   });
 
   res.json(products);
 });
+
 
 
 export {

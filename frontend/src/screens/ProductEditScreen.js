@@ -97,7 +97,7 @@ const ProductEditScreen = ({ match, history }) => {
       Вернуться назад
       </Link>
       <FormContainer>
-        <h1>Редактирование</h1>
+        <h1>Карточка товара</h1>
         {loadingUpdate && <Loader />}
         {errorUpdate && <Message variant='danger'>{errorUpdate}</Message>}
         {loading ? (
@@ -165,12 +165,16 @@ const ProductEditScreen = ({ match, history }) => {
 
             <Form.Group controlId='category'>
               <Form.Label>Категория</Form.Label>
-              <Form.Control
-                type='text'
-                placeholder='Enter category'
-                value={category}
-                onChange={(e) => setCategory(e.target.value)}
-              ></Form.Control>
+              <Form.Control as='select' value={category} onChange={(e) => setCategory(e.target.value)}>
+                <option value=''>Выберите категорию</option>
+                <option value='tennis'>Теннис</option>
+                <option value='outdoor'>Туризм, спорт, отдых</option>
+                <option value='shoes'>Обувь</option>
+                <option value='bicycles'>Велосипеды</option>
+                <option value='fitness'>Фитнес</option>
+                <option value='swimming'>Плавание</option>
+                <option value='other'>Другое</option>
+              </Form.Control>
             </Form.Group>
 
             <Form.Group controlId='description'>
@@ -184,7 +188,7 @@ const ProductEditScreen = ({ match, history }) => {
             </Form.Group>
 
             <Button type='submit' variant='primary'>
-              Обновление
+              Отправить
             </Button>
           </Form>
         )}

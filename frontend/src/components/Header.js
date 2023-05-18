@@ -67,7 +67,7 @@ const Header = () => {
                 <LinkContainer to='/category/tennis'>
                   <NavDropdown.Item>Большой теннис</NavDropdown.Item>
                 </LinkContainer>
-                <LinkContainer to='/category/tourism'>
+                <LinkContainer to='/category/outdoor'>
                   <NavDropdown.Item>Туризм, спорт, отдых</NavDropdown.Item>
                 </LinkContainer>
                 <LinkContainer to='/category/shoes'>

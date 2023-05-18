@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Row, Col } from 'react-bootstrap';
-import Product from './Product'; // Make sure to import the Product component correctly
-
+import Product from './Product';
 
 const OtherProducts = () => {
   const [products, setProducts] = useState([]);
@@ -26,11 +25,13 @@ const OtherProducts = () => {
   return (
     <div>
       <Row>
-        {products.map((product) => (
-          <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
-            <Product product={product} />
-          </Col>
-        ))}
+        {products
+          .filter(product => product.category === 'other')
+          .map((product) => (
+            <Col key={product._id} sm={12} md={6} lg={4} xl={3}>
+              <Product product={product} />
+            </Col>
+          ))}
       </Row>
     </div>
   );
