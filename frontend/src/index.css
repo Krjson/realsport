@@ -12,7 +12,7 @@ h1 {
 }
 
 h2 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   padding: 0.5rem 0;
 }
 
@@ -36,7 +36,7 @@ h2 {
 }
 
 .carousel img {
-  height: 300px;
+  height: 250px;
   padding: 30px;
   margin: 40px;
   border-radius: 50%;
@@ -45,6 +45,7 @@ h2 {
 }
 .carousel a {
   margin: 0 auto;
+  margin-top: 20px;
 }
 @media (max-width: 900px) {
   .carousel-caption h2 {
